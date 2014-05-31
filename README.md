@@ -1,4 +1,4 @@
 Haus
 ====
 
-Some experiments for home automation.
+Some experiments for home automation. Details will follow.
