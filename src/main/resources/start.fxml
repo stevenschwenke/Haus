@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="StartController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="StartController">
   <children>
-    <Button mnemonicParsing="false" onAction="#close" prefHeight="54.0" prefWidth="97.0" text="Close" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="58.0" />
-    <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Button" AnchorPane.bottomAnchor="88.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="58.0" />
+    <Button mnemonicParsing="false" onAction="#close" prefHeight="83.0" prefWidth="97.0" text="Close" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+    <Label fx:id="date" styleClass="header" text="date" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
   </children>
+  <stylesheets>
+    <URL value="@css.css" />
+  </stylesheets>
 </AnchorPane>
