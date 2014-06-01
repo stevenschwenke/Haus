@@ -13,9 +13,8 @@ public class Start extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
 
-
-        Scene scene = new Scene(root, 400, 200);
-
+        Scene scene = new Scene(root, 1024, 600);
+        stage.setFullScreen(true);
         stage.setTitle("Haus");
         stage.setScene(scene);
         stage.show();
