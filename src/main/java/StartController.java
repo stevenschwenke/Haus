@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TextArea;
 import javafx.util.Duration;
 
 import java.text.DateFormat;
@@ -17,9 +17,19 @@ public class StartController {
     private Label date;
 
     @FXML
+    private TextArea text;
+
+    private QuestionStore questionStore = new QuestionStore();
+
+    private QuestionWithAnswer currentQuestionWithAnswer;
+
+    @FXML
     void initialize() {
         startClock();
+        ShowNextQuestionOrNextAnswer();
     }
+
+
 
     private void startClock() {
 
@@ -35,6 +45,24 @@ public class StartController {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.playFromStart();
+    }
+
+    @FXML
+    private void ShowNextQuestionOrNextAnswer() {
+
+        // first execution run
+        if(currentQuestionWithAnswer == null ) {
+            currentQuestionWithAnswer = questionStore.getNewQeQuestionWithAnswer();
+            text.textProperty().set(currentQuestionWithAnswer.getQuestion());
+        } else {
+
+            if (text.textProperty().get().equals(currentQuestionWithAnswer.getQuestion())) {
+                text.textProperty().set(currentQuestionWithAnswer.getAnswer());
+            } else {
+                currentQuestionWithAnswer = questionStore.getNewQeQuestionWithAnswer();
+                text.textProperty().set(currentQuestionWithAnswer.getQuestion());
+            }
+        }
     }
 
     @FXML

@@ -8,10 +8,11 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="StartController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
   <children>
     <Button mnemonicParsing="false" onAction="#close" prefHeight="83.0" prefWidth="97.0" text="Close" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
     <Label fx:id="date" styleClass="header" text="date" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <TextArea fx:id="text" editable="false" layoutX="33.0" layoutY="108.0" onMouseClicked="#ShowNextQuestionOrNextAnswer" prefHeight="477.0" prefWidth="935.0" wrapText="true" />
   </children>
   <stylesheets>
     <URL value="@css.css" />
