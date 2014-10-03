@@ -52,14 +52,14 @@ public class StartController {
 
         // first execution run
         if(currentQuestionWithAnswer == null ) {
-            currentQuestionWithAnswer = questionStore.getNewQeQuestionWithAnswer();
+            currentQuestionWithAnswer = questionStore.getNewQuestionWithAnswer();
             text.textProperty().set(currentQuestionWithAnswer.getQuestion());
         } else {
 
             if (text.textProperty().get().equals(currentQuestionWithAnswer.getQuestion())) {
                 text.textProperty().set(currentQuestionWithAnswer.getAnswer());
             } else {
-                currentQuestionWithAnswer = questionStore.getNewQeQuestionWithAnswer();
+                currentQuestionWithAnswer = questionStore.getNewQuestionWithAnswer();
                 text.textProperty().set(currentQuestionWithAnswer.getQuestion());
             }
         }
