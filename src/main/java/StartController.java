@@ -29,8 +29,6 @@ public class StartController {
         ShowNextQuestionOrNextAnswer();
     }
 
-
-
     private void startClock() {
 
         final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss, dd.MM.yyyy");
@@ -51,7 +49,7 @@ public class StartController {
     private void ShowNextQuestionOrNextAnswer() {
 
         // first execution run
-        if(currentQuestionWithAnswer == null ) {
+        if (currentQuestionWithAnswer == null) {
             currentQuestionWithAnswer = questionStore.getNewQuestionWithAnswer();
             text.textProperty().set(currentQuestionWithAnswer.getQuestion());
         } else {
