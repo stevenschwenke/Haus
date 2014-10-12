@@ -17,6 +17,9 @@ public class StartController {
     private Label date;
 
     @FXML
+    private Label category;
+
+    @FXML
     private TextArea text;
 
     private QuestionStore questionStore = new QuestionStore();
@@ -52,6 +55,7 @@ public class StartController {
         if (currentQuestionWithAnswer == null) {
             currentQuestionWithAnswer = questionStore.getNewQuestionWithAnswer();
             text.textProperty().set(currentQuestionWithAnswer.getQuestion());
+            category.setText(currentQuestionWithAnswer.getCategory());
         } else {
 
             if (text.textProperty().get().equals(currentQuestionWithAnswer.getQuestion())) {
@@ -59,6 +63,7 @@ public class StartController {
             } else {
                 currentQuestionWithAnswer = questionStore.getNewQuestionWithAnswer();
                 text.textProperty().set(currentQuestionWithAnswer.getQuestion());
+                category.setText(currentQuestionWithAnswer.getCategory());
             }
         }
     }

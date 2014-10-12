@@ -9,6 +9,9 @@ public class QuestionWithAnswer {
     private String question;
     private String answer;
 
+
+    private String category;
+
     /**
      * Private constructor only needed for object mapping.
      */
@@ -45,12 +48,22 @@ public class QuestionWithAnswer {
         this._id = _id;
     }
 
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "QuestionWithAnswer{" +
                 "_id='" + _id + '\'' +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
