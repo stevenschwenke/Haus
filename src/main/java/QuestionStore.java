@@ -3,6 +3,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoTimeoutException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -34,31 +35,19 @@ public class QuestionStore {
      */
     private Jongo jongo;
 
-    /**
-     * Iterator to scroll through the questions
-     */
-    private Iterator<QuestionWithAnswer> qestionIterator;
-
     public QuestionStore() {
-        qestionIterator = setupConnectionToDatabaseAndQestionIterator();
+        setupConnectionToDatabase();
     }
 
     /**
-     * Connects to the database and setup an iterator with which the questions can be read.
-     *
-     * @return iterator for the questions
+     * Connects to the database.
      */
-    private Iterator<QuestionWithAnswer> setupConnectionToDatabaseAndQestionIterator() {
-        log.info("Connecting to database at "+MONGODB_HOST+":"+MONGODB_PORT);
-        MongoClient mongoClient = null;
+    private void setupConnectionToDatabase() {
+        log.info("Connecting to database at " + MONGODB_HOST + ":" + MONGODB_PORT);
         try {
-            mongoClient = new MongoClient(MONGODB_HOST, MONGODB_PORT);
+            MongoClient mongoClient = new MongoClient(MONGODB_HOST, MONGODB_PORT);
             DB db = mongoClient.getDB("mydb");
             jongo = new Jongo(db);
-            MongoCollection questions = jongo.getCollection("questions");
-
-            MongoCursor<QuestionWithAnswer> all = questions.find("{category: 'dump questions'}").as(QuestionWithAnswer.class);
-            return all.iterator();
         } catch (UnknownHostException e) {
             log.error("Unknown Host: " + MONGODB_HOST, e);
             throw new RuntimeException(e);
@@ -67,17 +56,22 @@ public class QuestionStore {
 
     public QuestionWithAnswer getNewQuestionWithAnswer() {
         try {
-            if (qestionIterator.hasNext()) {
-                QuestionWithAnswer next = qestionIterator.next();
-                return next;
-            } else {
-                log.info("Reseting question iterator and beginning with first question.");
-                MongoCollection questions = jongo.getCollection("questions");
-                MongoCursor<QuestionWithAnswer> all = questions.find("{category: 'dump questions'}").as(QuestionWithAnswer.class);
-                qestionIterator = all.iterator();
-                QuestionWithAnswer next = qestionIterator.next();
-                return next;
-            }
+            MongoCollection questions = jongo.getCollection("questions");
+
+            // from http://stackoverflow.com/questions/2824157/random-record-from-mongodb - skip() is rather
+            // inefficient since it has to scan that many documents. Also, there is a race condition if rows are
+            // removed between getting the count and running the query. However, the questions won't get deleted
+            // during runtime so the race confition doesn't matter.
+            int randomRecordIndex = (int) (Math.random() * questions.count());
+
+            // TODO: find the questions that should be repeated first with questions.find("{category: 'dump
+            // questions'}") and adapt generation of random number above to prevent out-of-range-errors.
+            Find find = questions.find();
+
+            // Negative number is like a positive number but prevents creation of a cursor. Hence,
+            // only one item will be found here:
+            MongoCursor<QuestionWithAnswer> all = find.limit(-1).skip(randomRecordIndex).as(QuestionWithAnswer.class);
+            return all.next();
         } catch (MongoTimeoutException te) {
             log.error("Mongo database could not be reached at " + MONGODB_HOST + ":" + MONGODB_PORT, te);
             throw te;
