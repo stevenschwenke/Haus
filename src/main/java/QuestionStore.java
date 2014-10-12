@@ -72,7 +72,7 @@ public class QuestionStore {
                 return next;
             } else {
                 log.info("Reseting question iterator and beginning with first question.");
-                MongoCollection questions = jongo.getCollection("stevensCollection");
+                MongoCollection questions = jongo.getCollection("questions");
                 MongoCursor<QuestionWithAnswer> all = questions.find("{category: 'dump questions'}").as(QuestionWithAnswer.class);
                 qestionIterator = all.iterator();
                 QuestionWithAnswer next = qestionIterator.next();
