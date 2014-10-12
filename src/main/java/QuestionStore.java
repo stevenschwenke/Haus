@@ -55,7 +55,7 @@ public class QuestionStore {
             mongoClient = new MongoClient(MONGODB_HOST, MONGODB_PORT);
             DB db = mongoClient.getDB("mydb");
             jongo = new Jongo(db);
-            MongoCollection questions = jongo.getCollection("stevensCollection");
+            MongoCollection questions = jongo.getCollection("questions");
 
             MongoCursor<QuestionWithAnswer> all = questions.find("{category: 'dump questions'}").as(QuestionWithAnswer.class);
             return all.iterator();
