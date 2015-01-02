@@ -46,10 +46,11 @@ public class QuestionStore {
 
         List<QuestionWithAnswer> questionWithAnswerList = new ArrayList<>((int) count);
 
-        for (ODocument animal : orientDB.browseClass("QuestionWithAnswer")) {
-            System.out.println(animal.field("id") + ": " + animal.field("question") + " -> " + animal.field
+        for (ODocument document : orientDB.browseClass("QuestionWithAnswer")) {
+            System.out.println(document.field("id") + ": " + document.field("question") + " -> " + document.field
                     ("answer"));
-            QuestionWithAnswer newItem = new QuestionWithAnswer(animal.field("question"), animal.field("answer"));
+            QuestionWithAnswer newItem = new QuestionWithAnswer(document.field("question"), document.field("answer"));
+            newItem.setCategory(document.field("category"));
             questionWithAnswerList.add(newItem);
         }
 
