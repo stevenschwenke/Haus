@@ -46,6 +46,7 @@ public class QuestionStore {
 
         List<QuestionWithAnswer> questionWithAnswerList = new ArrayList<>((int) count);
 
+        // TODO Thats ugly - everytime all records are loaded!
         for (ODocument document : orientDB.browseClass("QuestionWithAnswer")) {
             System.out.println(document.field("id") + ": " + document.field("question") + " -> " + document.field
                     ("answer"));
