@@ -1,4 +1,3 @@
-import org.jongo.marshall.jackson.oid.ObjectId;
 
 /**
  * Created by steven on 18.09.14.
