@@ -3,3 +3,7 @@
    -fx-font-size: 19px;
    -fx-font-weight: bold;
 }
+
+.mainTextArea {
+    -fx-font-size: 40;
+}
