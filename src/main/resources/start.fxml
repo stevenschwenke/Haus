@@ -13,7 +13,7 @@
   <children>
     <Button mnemonicParsing="false" onAction="#close" prefHeight="83.0" prefWidth="97.0" text="Close" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
     <Label fx:id="date" styleClass="header" text="date" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <TextArea fx:id="text" editable="false" layoutX="33.0" layoutY="108.0" onMouseClicked="#ShowNextQuestionOrNextAnswer" prefHeight="477.0" prefWidth="935.0" styleClass="mainTextArea" wrapText="true" />
+      <TextArea fx:id="text" editable="false" layoutX="33.0" layoutY="108.0" onMouseClicked="#ShowNextQuestionOrNextAnswer" prefHeight="477.0" prefWidth="935.0" styleClass="mainTextArea" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="33.0" layoutY="90.0" text="Category:" />
       <Label fx:id="category" layoutX="104.0" layoutY="90.0" prefHeight="15.0" prefWidth="313.0" text="categoryLabel" />
   </children>
