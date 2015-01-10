@@ -13,10 +13,12 @@
   <children>
     <Button mnemonicParsing="false" onAction="#close" prefHeight="83.0" prefWidth="97.0" text="Close" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
     <Label fx:id="date" styleClass="header" text="date" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <TextArea fx:id="text" editable="false" layoutX="33.0" layoutY="108.0" prefHeight="412.0" prefWidth="964.0" styleClass="mainTextArea" wrapText="true" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <TextArea fx:id="text" editable="false" layoutX="33.0" layoutY="108.0" prefHeight="412.0" prefWidth="880.0" styleClass="mainTextArea" wrapText="true" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="114.0" />
       <Label layoutX="33.0" layoutY="90.0" text="Category:" AnchorPane.topAnchor="90.0" />
       <Label fx:id="category" layoutX="104.0" layoutY="90.0" prefHeight="15.0" prefWidth="313.0" text="categoryLabel" AnchorPane.topAnchor="90.0" />
       <Button layoutX="496.0" layoutY="11.0" mnemonicParsing="false" onAction="#ShowNextQuestionOrNextAnswer" prefHeight="83.0" prefWidth="97.0" text="NEXT" />
+      <Button layoutX="913.0" layoutY="124.0" mnemonicParsing="false" onAction="#scrollUp" prefHeight="150.0" prefWidth="106.0" text="UP" AnchorPane.rightAnchor="5.0" />
+      <Button layoutX="921.0" layoutY="390.0" mnemonicParsing="false" onAction="#scrollDown" prefHeight="136.0" prefWidth="97.0" text="DOWN" AnchorPane.rightAnchor="5.0" />
   </children>
   <stylesheets>
     <URL value="@css.css" />

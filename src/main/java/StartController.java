@@ -13,6 +13,8 @@ import java.util.Calendar;
 
 public class StartController {
 
+    private double SCROLL_SPEED = 30;
+
     @FXML
     private Label date;
 
@@ -46,6 +48,16 @@ public class StartController {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.playFromStart();
+    }
+
+    @FXML
+    private void scrollDown() {
+        text.setScrollTop(text.getScrollTop()+SCROLL_SPEED);
+    }
+
+    @FXML
+    private void scrollUp() {
+        text.setScrollTop(text.getScrollTop()-SCROLL_SPEED);
     }
 
     @FXML
