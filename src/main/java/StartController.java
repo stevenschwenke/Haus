@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class StartController {
 
-    private double SCROLL_SPEED = 30;
+    private double SCROLL_SPEED = 100;
 
     @FXML
     private Label date;
